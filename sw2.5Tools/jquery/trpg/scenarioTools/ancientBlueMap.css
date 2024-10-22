@@ -27,7 +27,7 @@ footer {
     display:inline-block;
 }
 
-#io-github-shunshun94-trpg-scenarioTools-AncientBlue {
+#trpg-scenarioTools-AncientBlue {
     position:relative;
     background-image: url("./img/ancientBlue/blankMap.png");
     height: 670px;
@@ -94,12 +94,12 @@ dt {
     padding-top:8px;
 }
 
-#io-github-shunshun94-trpg-scenarioTools-AncientBlue > div {
+#trpg-scenarioTools-AncientBlue > div {
     position:absolute;
     display:block;
 }
 
-#io-github-shunshun94-trpg-scenarioTools-AncientBlue > div > h2 {
+#trpg-scenarioTools-AncientBlue > div > h2 {
     padding-left:8px;
 }
 

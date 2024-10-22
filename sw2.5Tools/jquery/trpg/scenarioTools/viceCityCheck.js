@@ -1,18 +1,16 @@
 var io = io || {};
-io.github = io.github || {};
-io.github.shunshun94 = io.github.shunshun94 || {};
-io.github.shunshun94.trpg = io.github.shunshun94.trpg || {};
-io.github.shunshun94.trpg.scenarioTools = io.github.shunshun94.trpg.scenarioTools || {};
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck = class {
+trpg = trpg || {};
+trpg.scenarioTools = trpg.scenarioTools || {};
+trpg.scenarioTools.ViceCityCheck = class {
 	constructor($dom) {
 		const id = $dom.attr('id');
 		const query = this.getQuery();
 		this.components = [
-			new io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar($dom.find(`#${id}-calendar`), query),
-			new io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.RndEvents($dom.find(`#${id}-rndevents`), query),
-			new io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table($dom.find(`#${id}-trump30table`), query),
-			new io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Missions($dom.find(`#${id}-missions`), query),
-			new io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Counters($dom.find(`#${id}-counters`), query)
+			new trpg.scenarioTools.ViceCityCheck.Calendar($dom.find(`#${id}-calendar`), query),
+			new trpg.scenarioTools.ViceCityCheck.RndEvents($dom.find(`#${id}-rndevents`), query),
+			new trpg.scenarioTools.ViceCityCheck.Trump30Table($dom.find(`#${id}-trump30table`), query),
+			new trpg.scenarioTools.ViceCityCheck.Missions($dom.find(`#${id}-missions`), query),
+			new trpg.scenarioTools.ViceCityCheck.Counters($dom.find(`#${id}-counters`), query)
 		];
 		$dom.find(`#${id}-generate`).click((e)=>{
 			const url = `${location.href.replace(location.search, '')}?${this.components.map((c)=>{return c.generateUrl()}).join('&')}`;
@@ -46,13 +44,13 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck = class {
 	}
 };
 
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar = class {
+trpg.scenarioTools.ViceCityCheck.Calendar = class {
 	constructor($dom, status={}) {
 		this.$dom = $dom;
 		this.id = $dom.attr('id');
 		this.tdClass = `${this.id}-table-day-tr-td`;
 		this.currentTime = Number(status.currentTime)+1 || 6;
-		this.calendarLength = Number(status.calendarLength) || io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS.SUPPORTED_DAY;
+		this.calendarLength = Number(status.calendarLength) || trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS.SUPPORTED_DAY;
 		this.sleptTime = (status.sleptTime || '').split(',');
 		this.lunchTime = (status.lunchTime || '').split(',');
 		this.generateDom();
@@ -70,7 +68,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar = class {
 		const lunchTimesList = $.makeArray($(`.${this.tdClass}-lunch`));
 		const lunchTime = `lunchTime=${lunchTimesList.map((d)=>{return this.getTimeId($(d))}).join(',')}`;
 
-		if((this.calendarLength - 5) * io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS.HOURS - Number(currentTimeNum) < 0) {
+		if((this.calendarLength - 5) * trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS.HOURS - Number(currentTimeNum) < 0) {
 			this.calendarLength += 5;
 		} 
 
@@ -191,7 +189,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar = class {
 						class="${this.id}-table-day-tr">
 							<th>${i+1}</th>
 						</tr>`);
-			for(var j = 0; j < io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS.HOURS; j++) {
+			for(var j = 0; j < trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS.HOURS; j++) {
 				$dayTr.append(`<td
 					class="${this.tdClass}"
 					id="${this.tdClass}-${j+i*24}"
@@ -213,12 +211,12 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar = class {
 		this.$dom.append(`<p id="${this.id}-howToUse">左クリックでクリックした時間の行動を未行動・行動済・食事・睡眠の順番に切り替えます<br/>右クリックでクリックした時間<strong>以降</strong>の行動を全て未行動にします</p>`);
 	}
 };
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS = {
+trpg.scenarioTools.ViceCityCheck.Calendar.CONSTS = {
 	SUPPORTED_DAY: 30,
 	HOURS: 24
 };
 
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.RndEvents = class {
+trpg.scenarioTools.ViceCityCheck.RndEvents = class {
 	constructor($dom, status={}) {
 		this.$dom = $dom;
 		this.id = $dom.attr('id');
@@ -283,7 +281,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.RndEvents = class {
 	}
 };
 
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table = class {
+trpg.scenarioTools.ViceCityCheck.Trump30Table = class {
 	constructor($dom, status={}) {
 		this.$dom = $dom;
 		this.id = $dom.attr('id');
@@ -316,15 +314,15 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table = class {
 		let $table = $(`<table border="1" id="${this.id}-table">
 			<thead>
 			<tr>
-			${io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table.TYPES.map((m)=>{
+			${trpg.scenarioTools.ViceCityCheck.Trump30Table.TYPES.map((m)=>{
 				return '<th colspan="3">' + m + '</th>\n'
 			}).join('')}
 			</tr></thead>
 		</table>`);
 		let $body = $('<tbody></tbody>');
 		const clazz = this.clazz;
-		const marks = io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table.TYPES.length;
-		for(var i = 0; i < (io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table.LENGTH / 3); i++) {
+		const marks = trpg.scenarioTools.ViceCityCheck.Trump30Table.TYPES.length;
+		for(var i = 0; i < (trpg.scenarioTools.ViceCityCheck.Trump30Table.LENGTH / 3); i++) {
 			let $tr = $('<tr></tr>');
 			for(var j = 0; j < marks; j++) {
 				for(var k = 0; k < 3; k++) {
@@ -344,17 +342,17 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table = class {
 		return `trump30=${list.join(',')}`;
 	}
 };
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table.LENGTH = 30;
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Trump30Table.TYPES = ['♠','♥','♣','♦'];
+trpg.scenarioTools.ViceCityCheck.Trump30Table.LENGTH = 30;
+trpg.scenarioTools.ViceCityCheck.Trump30Table.TYPES = ['♠','♥','♣','♦'];
 
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Missions = class {
+trpg.scenarioTools.ViceCityCheck.Missions = class {
 	constructor($dom, status={}) {
 		this.$dom = $dom;
 		this.id = $dom.attr('id');
 		this.trClass = `${this.id}-tr`;
 		this.clazz = `${this.id}-tr-select`;
 		this.$select = `<select class="${this.clazz}"><option></option>` +
-		io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Missions.MISSION_LIST.map((m, i)=>{
+		trpg.scenarioTools.ViceCityCheck.Missions.MISSION_LIST.map((m, i)=>{
 			return `<option value="${i}">${m}</option>`
 		}).join('\n') + '</select>';
 		this.acceptedMissons = (status.acceptedMissons || '').split(',').filter((d)=>{return d}).map((d)=>{return Number(d)}).sort((a,b)=>{return a-b});
@@ -407,7 +405,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Missions = class {
 	}
 };
 
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Missions.MISSION_LIST = [
+trpg.scenarioTools.ViceCityCheck.Missions.MISSION_LIST = [
 	"1: カリンの消息",
 	"2: トリシアを訪ねて",
 	"3: ミルタバル神殿の盗賊ギルド",
@@ -437,7 +435,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Missions.MISSION_LIST = [
 ];
 
 
-io.github.shunshun94.trpg.scenarioTools.ViceCityCheck.Counters = class {
+trpg.scenarioTools.ViceCityCheck.Counters = class {
 	constructor($dom, status={}) {
 		this.id = $dom.attr('id');
 		this.$dom = $dom;

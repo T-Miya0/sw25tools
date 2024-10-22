@@ -1,17 +1,15 @@
 var io = io || {};
-io.github = io.github || {};
-io.github.shunshun94 = io.github.shunshun94 || {};
-io.github.shunshun94.trpg = io.github.shunshun94.trpg || {};
-io.github.shunshun94.trpg.scenarioTools = io.github.shunshun94.trpg.scenarioTools || {};
+trpg = trpg || {};
+trpg.scenarioTools = trpg.scenarioTools || {};
 
-io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
+trpg.scenarioTools.ViceCity = class {
 	constructor(opts={}) {
-		this.dom = opts.dom || $(`#${io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.ID}`);
+		this.dom = opts.dom || $(`#${trpg.scenarioTools.ViceCity.CONSTS.ID}`);
 		this.decided = this.getQuery(opts.decided);
 		this.used = [];
-		this.mode = opts.mode || this.decided.mode || io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.MODES.EDIT;
+		this.mode = opts.mode || this.decided.mode || trpg.scenarioTools.ViceCity.CONSTS.MODES.EDIT;
 		this.buildMap();
-		if( this.mode === io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.MODES.EDIT ) { this.bindEvents(); }
+		if( this.mode === trpg.scenarioTools.ViceCity.CONSTS.MODES.EDIT ) { this.bindEvents(); }
 	}
 
 	getMode() {
@@ -31,9 +29,9 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 
 	buildPlaceList() {
 		let list = '<option></option>\n';
-		for(var key in io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.AREAS) {
+		for(var key in trpg.scenarioTools.ViceCity.CONSTS.AREAS) {
 			if(! this.used.includes(key)) {
-				list += `<option value="${key}">${io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.AREAS[key]}</option>\n`;
+				list += `<option value="${key}">${trpg.scenarioTools.ViceCity.CONSTS.AREAS[key]}</option>\n`;
 			}
 		}
 		return list;
@@ -43,8 +41,8 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 		this.dom.find('.paragraph').each((i, v)=>{
 			const $dom = $(v);
 			$dom.attr('id', `paragraph-${i}`);
-			if(this.decided[i] || this.mode === io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.MODES.VIEW) {
-				$dom.append(`<span class="paragraph-name" id="paragraph-name-${i}">${io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.AREAS[this.decided[i]] || '<br/>？'}</span>`);
+			if(this.decided[i] || this.mode === trpg.scenarioTools.ViceCity.CONSTS.MODES.VIEW) {
+				$dom.append(`<span class="paragraph-name" id="paragraph-name-${i}">${trpg.scenarioTools.ViceCity.CONSTS.AREAS[this.decided[i]] || '<br/>？'}</span>`);
 				this.used.push(this.decided[i]);
 			} else {
 				$dom.append(`<select class="paragraph-select" id="paragraph-select-${i}"></select>`);
@@ -53,15 +51,15 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 		const list = this.buildPlaceList();
 		$('.paragraph-select').append(list);
 
-		if(this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH]) {
-			if(/\d+/.test(this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH])) {
-				$(`#paragraph-${this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH]}`).addClass('paragraph-current-exist');
+		if(this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH]) {
+			if(/\d+/.test(this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH])) {
+				$(`#paragraph-${this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH]}`).addClass('paragraph-current-exist');
 			} else {
-				$(`.${this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH]}`).addClass('paragraph-current-exist');
+				$(`.${this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH]}`).addClass('paragraph-current-exist');
 			}
 		}
-		if(this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER]) {
-			const spliters = this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER].split('s');
+		if(this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER]) {
+			const spliters = this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER].split('s');
 			spliters[0].split(',').filter((d)=>{return d}).forEach((v)=>{
 				$(`#paragraph-${v}`).addClass('paragraph-lefttop2rightbottom');
 			});
@@ -86,10 +84,10 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 
 	moveToParagraph(e) {
 		if(typeof e === 'string') {
-			if(this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH] === e) {
-				this.updatePage(io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, '');
+			if(this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH] === e) {
+				this.updatePage(trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, '');
 			} else {
-				this.updatePage(io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, e);
+				this.updatePage(trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, e);
 			}
 		} else {
 			let tag = $(e.target);
@@ -101,10 +99,10 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 			}
 			const domIdRE = /([a-z0-9]+)$/;
 			const newPlaceId = domIdRE.exec(tag.attr('id'))[0];
-			if(this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH] === newPlaceId) {
-				this.updatePage(io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, '');
+			if(this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH] === newPlaceId) {
+				this.updatePage(trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, '');
 			} else {
-				this.updatePage(io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, newPlaceId);
+				this.updatePage(trpg.scenarioTools.ViceCity.CONSTS.KEYS.CURRENT_PARAGRAPH, newPlaceId);
 			}
 		}
 	}
@@ -128,7 +126,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 		}
 		const paragraphNum = /\d+/.exec($(clicked).attr('id'))[0];
 		const tag = $(`#paragraph-${paragraphNum}`);
-		const dividedParagraphs = (this.decided[io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER] || 's').split('s').map((list)=>{
+		const dividedParagraphs = (this.decided[trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER] || 's').split('s').map((list)=>{
 			return list.split(',');
 		});
 		if(tag.hasClass('paragraph-lefttop2rightbottom')) {
@@ -139,7 +137,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 		} else {
 			dividedParagraphs[0].push(paragraphNum);
 		}
-		this.updatePage(io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER, dividedParagraphs.map((list)=>{return list.join(',')}).join('s'));
+		this.updatePage(trpg.scenarioTools.ViceCity.CONSTS.KEYS.SPLITTER, dividedParagraphs.map((list)=>{return list.join(',')}).join('s'));
 	}
 	
 	bindEvents() {
@@ -153,7 +151,7 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity = class {
 	}
 };
 
-io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS = {
+trpg.scenarioTools.ViceCity.CONSTS = {
 		KEYS: {
 			CURRENT_PARAGRAPH: '_currentParagraph',
 			SPLITTER: '_splitter'

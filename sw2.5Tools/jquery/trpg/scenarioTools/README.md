@@ -2,12 +2,12 @@
 
 ## エンシェントブルーマップ管理ツール
 
-https://shunshun94.github.io/shared/jquery/io/github/shunshun94/trpg/scenarioTools/ancientBlueMap.html
+https://t-miya0.github.io/sw25tools/sw2.5Tools/jquery/trpg/scenarioTools/ancientBlueMap.html
 
 ## ヴァイスシティマップ管理ツール
 
-https://shunshun94.github.io/shared/jquery/io/github/shunshun94/trpg/scenarioTools/viceCity.html
+https://t-miya0.github.io/sw25tools/sw2.5Tools/jquery/trpg/scenarioTools/viceCity.html
 
 ## ヴァイスシティイベント管理ツール
 
-https://shunshun94.github.io/shared/jquery/io/github/shunshun94/trpg/scenarioTools/viceCityCheck
+https://t-miya0.github.io/sw25tools/sw2.5Tools/jquery/trpg/scenarioTools/viceCityCheck
