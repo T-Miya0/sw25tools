@@ -3,7 +3,7 @@
 <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
 <meta property="og:title" content="エンシェントブルー地図管理ツール" />
 <meta property="og:type" content="website" />
-<meta property="og:image" content="https://shunshun94.github.io/shared/jquery/io/github/shunshun94/trpg/scenarioTools/img/ancientBlue/opg.png" />
+<meta property="og:image" content="https://github.com/T-Miya0/sw25tools/sw2.5Tools/jquery/trpg/scenarioTools/img/ancientBlue/opg.png" />
 <meta property="og:site_name" content="エンシェントブルー地図管理ツール" />
 <meta property="og:description" content="エンシェントブルーのマップをオンラインで簡単に共有するツール" />
 <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
 </head>
 <body>
 <div id="map">
-<div id="io-github-shunshun94-trpg-scenarioTools-AncientBlue">
+<div id="trpg-scenarioTools-AncientBlue">
 	<div id="area1">
 		<h2>海域1 静かの海</h2>
 		<div class="paragraph"><span class="paragraph-code">１－１</span></div>
@@ -106,9 +106,7 @@
 </dl>
 <h2>共有用 URL・ダウンロード</h2>
 <p>　　　ＵＲＬ：<input type="text" readonly id="url_plain"/><br/>
-ゆとシート用：<input type="text" readonly id="url_ytsheet"/><br/>
 ａ要素挿入用：<input type="text" readonly id="url_link"/><br/>
-iframe埋込用：<input type="text" readonly id="url_iframe"/><br/>
 
 ダウンロード：<button id="dl_picture">地図を画像形式で取得</button></p>
 <h2>素材</h2>
@@ -131,7 +129,7 @@ iframe埋込用：<input type="text" readonly id="url_iframe"/><br/>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="./viceCity.js"></script>
 <script>
-io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.AREAS = {
+trpg.scenarioTools.ViceCity.CONSTS.AREAS = {
   "11": "11 黄金の浜",
   "12": "12 機獣荒野",
   "13": "13 流氷の入り江",
@@ -170,8 +168,8 @@ io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.AREAS = {
   "66": "66 眠れる竜の谷"
 };
 
-const viceCity = new io.github.shunshun94.trpg.scenarioTools.ViceCity({
-	dom: $('#io-github-shunshun94-trpg-scenarioTools-AncientBlue')
+const viceCity = new trpg.scenarioTools.ViceCity({
+	dom: $('#trpg-scenarioTools-AncientBlue')
 });
 
 const copyText = (e)=>{
@@ -179,18 +177,14 @@ const copyText = (e)=>{
 	alert('クリップボードにコピーしました');
 };
 
-if(viceCity.getMode() === io.github.shunshun94.trpg.scenarioTools.ViceCity.CONSTS.MODES.VIEW) {
+if(viceCity.getMode() === trpg.scenarioTools.ViceCity.CONSTS.MODES.VIEW) {
 	$('body').addClass('viewMode');
 }
 
 $('#url_plain').val(location.href);
 $('#url_plain').click(copyText)
-$('#url_ytsheet').val(`[[七王群島の地図>${location.href}]]`);
-$('#url_ytsheet').click(copyText);
 $('#url_link').val(`<a href="${location.href}" target="_blank" rel="noopener noreferrer">地図</a>`);
 $('#url_link').click(copyText);
-$('#url_iframe').val(`<div class="io-github-shunshun94-trpg-scenarioTools-AncientBlue-insert" style="width:520px;height:450px;"><span class="io-github-shunshun94-trpg-scenarioTools-AncientBlue-link" style="text-align:right;font-size:80%;display:block;"><a href="${location.href}" target="_blank" rel="noopener noreferrer">編集する</a></span><iframe class="io-github-shunshun94-trpg-scenarioTools-AncientBlue-insert-map" width="1040" height="840" style="transform-origin:0 0;transform:scale(0.5);" src="${location.href}&mode=view"></iframe></div>`);
-$('#url_iframe').click(copyText);
 $('#dl_picture').click((e)=>{
 	$('body').addClass('picture');
 	html2canvas(document.getElementById('map')).then(canvas => {
