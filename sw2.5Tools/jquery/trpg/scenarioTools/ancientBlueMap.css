@@ -1,0 +1,416 @@
+@charset "utf-8";
+* {
+	box-sizing: border-box;
+	font-family: "BIZ UDゴシック","UD Shin Go NT Light JIS2004","UD デジタル 教科書体 N-R", Verdana, Roboto, "Droid Sans", "游ゴシック", YuGothic, "メイリオ", Meiryo, "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "ＭＳ Ｐゴシック", sans-serif;
+}
+
+h2 {
+    margin-top:4px;
+    font-size:1.2em;
+}
+
+#how_to_use {
+    display:inline-block;
+    width:500px;
+}
+
+footer {
+    border-top:blue 4px double;
+    background-color:azure;
+    font-size:0.6em;
+    position:relative;
+    top:32px;
+}
+
+#map {
+    position:relative;
+    display:inline-block;
+}
+
+#io-github-shunshun94-trpg-scenarioTools-AncientBlue {
+    position:relative;
+    background-image: url("./img/ancientBlue/blankMap.png");
+    height: 670px;
+    top:20px;
+    width:1000px;
+    left:16px;
+    display:inline-block;
+    background-size:contain;
+    background-repeat: no-repeat;
+}
+
+.picture select,
+.picture footer,
+.picture #how_to_use,
+.viewMode #how_to_use {
+    display:none;
+}
+
+.picture #map,
+.viewMode #map {
+    padding-top:39px;
+    padding-bottom:39px;
+    width:1000px;
+}
+
+.paragraph, .paragraph-fixed {
+    width:54px;
+    height:54px;
+    background-color:rgba(240, 248, 255, 0.8);
+    border:1px skyblue solid;
+    text-align:center;
+    padding:4px;
+    position:absolute;
+    font-size:0.4em;
+}
+
+.paragraph-select {
+    width:90%;
+}
+
+.paragraph-name {
+    display:block;
+}
+
+.paragraph-current-exist {
+    background-color:honeydew;
+    background-image: url("./img/here.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border:1px green solid;
+}
+
+.paragraph-highlight {
+    background-color:mistyrose;
+    background-image: url("./img/pin.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    border:1px hotpink solid;
+}
+
+dt {
+    padding-top:8px;
+}
+
+#io-github-shunshun94-trpg-scenarioTools-AncientBlue > div {
+    position:absolute;
+    display:block;
+}
+
+#io-github-shunshun94-trpg-scenarioTools-AncientBlue > div > h2 {
+    padding-left:8px;
+}
+
+#area1 {
+    top:212px;
+    left:800px;
+    width:200px;
+    height:200px;
+}
+
+#paragraph-0 {
+    top:99px;
+    left:97px;
+    height:59px;
+    width:59px;
+}
+
+#paragraph-1 {
+    top:112px;
+    left:33px;
+    height:64px;
+    width:64px;
+}
+
+#paragraph-2 {
+    top:48px;
+    left:33px;
+    height:64px;
+    width:64px;
+}
+
+#paragraph-3 {
+    top:40px;
+    left:97px;
+    height:59px;
+    width:59px;
+}
+
+#area2 {
+    top:32px;
+    left:640px;
+    width:200px;
+    height:220px;
+}
+
+#paragraph-4 {
+    top:94px;
+    left:117px;
+    height:59px;
+    width:64px;
+}
+
+#paragraph-5 {
+    top:144px;
+    left:54px;
+    height:62px;
+    width:64px;
+}
+
+#paragraph-6 {
+    top:28px;
+    left:91px;
+    height:62px;
+    width:64px;
+}
+
+#paragraph-7 {
+    top:76px;
+    left:20px;
+    height:60px;
+    width:60px;
+}
+
+#area3 {
+    top:376px;
+    left:640px;
+    width:200px;
+    height:200px;
+}
+
+#paragraph-8 {
+    top:26px;
+    left:64px;
+    width:61px;
+}
+
+#paragraph-9 {
+    top:79px;
+    left:121px;
+    width:63px;
+}
+
+#paragraph-10 {
+    top:142px;
+    left:79px;
+    width:62px;
+    height:56px;
+}
+
+#paragraph-11 {
+    top:94px;
+    left:8px;
+    height:56px;
+    width:63px;
+}
+
+#area4 {
+    top:222px;
+    left:404px;
+    width:200px;
+    height:220px;
+}
+
+#paragraph-12 {
+    top:102px;
+    left:6px;
+    height:62px;
+    width:61px;
+}
+
+#paragraph-13 {
+    top:30px;
+    left:59px;
+    height:64px;
+    width:64px;
+}
+
+#paragraph-14 {
+    top:74px;
+    left:130px;
+    height:64px;
+    width:64px;
+}
+
+#paragraph-15 {
+    top:142px;
+    left:81px;
+    height:64px;
+    width:64px;
+}
+
+#area5 {
+    top:-20px;
+    left:400px;
+    width:188px;
+    height:200px;
+}
+
+#paragraph-16 {
+    top:30px;
+    left:90px;
+    height:52px;
+}
+
+#paragraph-17 {
+    top:82px;
+    left:69px;
+    height:48px;
+    width:56px;
+}
+
+#paragraph-18 {
+    top:85px;
+    left:125px;
+    height:49px;
+}
+
+#paragraph-19 {
+    top:134px;
+    left:90px;
+    height:53px;
+    width:60px;
+}
+
+#area6 {
+    top:464px;
+    left:380px;
+    width:208px;
+    height:216px;
+}
+
+#paragraph-20 {
+    top:36px;
+    left:53px;
+    height:60px;
+    width:62px;
+}
+
+#paragraph-21 {
+    top:87px;
+    left:143px;
+    width:56px;
+}
+
+#paragraph-22 {
+    top:100px;
+    left:8px;
+    height:61px;
+    width:66px;
+}
+
+#paragraph-23 {
+    top:144px;
+    left:74px;
+    height:61px;
+    width:66px;
+}
+
+#area7 {
+    top:60px;
+    left:158px;
+    width:200px;
+    height:212px;
+}
+
+#paragraph-24 {
+    top:100px;
+    left:145px;
+    height:53px;
+    width:51px;
+}
+
+#paragraph-25 {
+    top:105px;
+    left:95px;
+    width: 50px;
+    height: 51px;
+}
+
+#paragraph-26 {
+    top:52px;
+    left:71px;
+}
+
+#paragraph-27 {
+    top:88px;
+    left:17px;
+}
+
+#paragraph-fixed01 {
+    top:156px;
+    left:97px;
+    width:52px;
+    height:50px;
+}
+
+#area8 {
+    top:400px;
+    left:133px;
+    width:200px;
+    height:200px;
+}
+
+#paragraph-28 {
+    top:42px;
+    left:33px;
+}
+
+#paragraph-29 {
+    top:36px;
+    left:87px;
+}
+
+#paragraph-30 {
+    top:96px;
+    left:16px;
+    width:62px;
+}
+
+#paragraph-31 {
+    top:132px;
+    left:78px;
+}
+
+#paragraph-fixed02 {
+    top:89px;
+    left:132px;
+}
+
+#area9 {
+    top:200px;
+    left:0px;
+    width:208px;
+    height:220px;
+}
+
+#paragraph-32 {
+    top:99px;
+    left:-2px;
+}
+
+#paragraph-33 {
+    top:39px;
+    left:71px;
+}
+
+#paragraph-34 {
+    top:94px;
+    left:144px;
+}
+
+#paragraph-35 {
+    top:156px;
+    left:85px;
+}
+
+#paragraph-fixed03 {
+    top:97px;
+    left:61px;
+    width:65px;
+}
+
+
+
